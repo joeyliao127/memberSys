@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/reset.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/general.css')}}"
+    />
+    <title>Fail</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <section class="introText w-set">
+          <h1>失敗頁面</h1>
+        </section>
+        <section class="message">
+          <p>{{message}}</p>
+          <a href="/">回到首頁</a>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

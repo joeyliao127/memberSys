@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/reset.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/style.css')}}"
+    />
+    <title>index</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <section class="introText w-set">
+          <h2>歡迎光臨，請輸入帳號密碼</h2>
+        </section>
+        <section class="login">
+          <h1>登入系統</h1>
+          <form action="/signin" method="post" class="form">
+            <div class="username">
+              <label for="username">帳號</label>
+              <input type="text" id="username" name="username" />
+            </div>
+            <div class="password">
+              <label for="password">密碼</label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <div class="contract">
+              <label for="contract">同意條款</label>
+              <input type="checkbox" name="contract" id="contract" />
+              <div class="alert">
+                <p>(請詳閱同意條款)</p>
+              </div>
+            </div>
+            <button class="button-64" role="button" id="submit">
+              <span class="text">登入系統</span>
+            </button>
+          </form>
+          <div class="signup">
+            <a href="/signup">註冊會員</a>
+          </div>
+        </section>
+        <section class="calculator">
+          <h2>計算正整數的平方</h2>
+          <form action="/square" id="square" novalidate>
+            <label for="number">正整數</label>
+            <input type="number" name="number" id="number" />
+            <button>計算</button>
+          </form>
+          <p class="calcu_alert">(請輸入正整數)</p>
+        </section>
+      </div>
+    </div>
+    <script src="{{url_for('static',filename='app.js')}}"></script>
+  </body>
+</html>
