@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/reset.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/style.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='style/general.css')}}"
+    />
+    <title>註冊會員</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <section class="introText w-set">
+          <h1>註冊會員</h1>
+        </section>
+        <section class="message">
+          <form action="/register" method="post" class="form">
+            <div class="username">
+              <label for="username">帳號</label>
+              <input type="text" id="username" name="username" />
+            </div>
+            <div class="password">
+              <label for="password">密碼</label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <button class="button-64" role="button" id="submit">
+              <span class="text">註冊</span>
+            </button>
+          </form>
+          <a href="/">回到首頁</a>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

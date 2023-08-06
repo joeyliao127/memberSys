@@ -1,8 +1,10 @@
 from flask import *
 
 import pymongo
-client = pymongo.MongoClient("mongodb+srv://joey01271998:root@cluster0.3bhvw0v.mongodb.net/")
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 print("連線DB成功")
+member_db = client.member
+users_collection=member_db.users
 
 app = Flask(__name__, static_folder="Public")
 app.secret_key = "secret_keyyyyyyy"
@@ -16,7 +18,13 @@ def signin():
     # session["state"] = True
     username = request.form["username"]
     password = request.form["password"]
-    if(username =="test" and password =="test"):
+    result = users_collection.find_one({"$and": [
+        {"username": username},
+        {"password": password}
+    ]})
+
+    # print(f"check = {result}\n,user = {username}\n us = {result['username']}\n, passwd = {password}\n ps = {result['password']}\n")
+    if(result):
         session["state"] =  True
         return redirect("/member")
     elif(username == "" or password ==""):
@@ -57,6 +65,18 @@ def square(number):
 
 @app.route("/signup")
 def signup():
-    return "這裡是註冊頁面"
+    return render_template("signup.html")
 
+@app.route("/register", methods=["POST"])
+def register():
+    username = request.form["username"]
+    password = request.form["password"]
+    result = users_collection.insert_one({"username": username, "password": password})
+    all = users_collection.find()
+    for user in all:
+        print(f"新增帳號後的collection狀態:{user}")
+    return redirect("/")
+
+print("正在執行flask..")
 app.run(port=3000, debug=True, use_reloader=True)
+
