@@ -1,7 +1,7 @@
 from flask import *
 
 import pymongo
-client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+# client = pymongo.MongoClient(connect to MongoDB)
 print("連線DB成功")
 member_db = client.member
 users_collection=member_db.users
